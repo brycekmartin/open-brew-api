@@ -8,7 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@master
+      
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -17,10 +18,10 @@ jobs:
       run: dotnet build --configuration Release
     - name: dotnet publish
       run: |
-        dotnet public -c Release -o open-brew-api
+        dotnet publish -c Release -o open-brew-api
     - name: 'Run Azure webapp deploy action using publish profile credentials'
       uses: azure/webapps-deploy@v1
       with:
         app-name: andculture-interview-api
         publish-profile: $publish-profile
-        package: './dotnetcorewebapp'
+        package: './open-brew-api'
