@@ -23,5 +23,5 @@ jobs:
       uses: azure/webapps-deploy@v1
       with:
         app-name: andculture-interview-api
-        publish-profile: $publish-profile
+        publish-profile: ${{secrets.publish-profile}}
         package: './open-brew-api'
