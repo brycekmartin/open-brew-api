@@ -26,6 +26,10 @@ namespace andculture_interview_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddHttpsRedirection(options =>
+            //{
+            //    options.HttpsPort = 443;
+            //});
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -37,6 +41,7 @@ namespace andculture_interview_api
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
+
             services.AddControllers();
             services.AddScoped<IBreweryRepository, BreweryRepository>();
             services.AddScoped<IBreweryService, BreweryService>();
@@ -49,9 +54,10 @@ namespace andculture_interview_api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            //app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
-            app.UseHttpsRedirection();
+
+
 
             app.UseRouting();
 
