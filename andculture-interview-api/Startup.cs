@@ -30,7 +30,8 @@ namespace andculture_interview_api
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder.WithOrigins(
-                            "http://localhost:3000"
+                            "http://localhost:3000",
+                            "https://andculture-interview.herokuapp.com/"
                         )
                         .AllowAnyMethod()
                         .AllowAnyHeader()
