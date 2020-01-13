@@ -13,7 +13,7 @@ namespace andculture_interview_api.Services
     {
         public async Task<List<Brewery>> GetBreweries()
         {
-            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Data\openBrewDB.json");
+            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Data/openBrewDB.json");
             var jsonString = await File.ReadAllTextAsync(path);
             try
             {
