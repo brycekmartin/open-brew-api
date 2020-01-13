@@ -15,17 +15,17 @@ namespace andculture_interview_api.Controllers
     [Route("api")]
     public class BreweryController : ControllerBase
     {
-        //private readonly ILogger<BreweryController> _logger;
+        private readonly ILogger<BreweryController> _logger;
         private readonly IBreweryService _breweryService;
-        public BreweryController(IBreweryService breweryService/*ILogger<BreweryController> logger*/)
+        public BreweryController(IBreweryService breweryService,ILogger<BreweryController> logger)
         {
-            //_logger = logger;
+            _logger = logger;
             _breweryService = breweryService;
         }
         [HttpGet("brewery")]
         public async Task<IActionResult> GetBreweries()
         {
-            //_logger.LogInformation("GetBreweries called.");
+            _logger.LogInformation("GetBreweries called.");
 
             try
             {
@@ -35,6 +35,8 @@ namespace andculture_interview_api.Controllers
             }
             catch (Exception e)
             {
+                _logger.LogError(e, "Error getting breweries.");
+
                 return BadRequest();
             }
         }
